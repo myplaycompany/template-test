@@ -4,9 +4,9 @@ openDraftPR: true
 copyIssueLabelsToPR: true
 copyIssueAssigneeToPR: true
 branches:
-  - label: \U0001F41B bug
+  - label: "\U0001F41B bug"
     prefix: bug-
-  - label: \b\U0001F4AB feat
+  - label: "\b\U0001F4AB feat"
     prefix: feat-
-  - label: 🔥 hotfix
+  - label: "🔥 hotfix"
     prefix: hotfix-
