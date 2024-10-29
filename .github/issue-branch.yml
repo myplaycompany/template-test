@@ -1,4 +1,4 @@
-branchName: "${issue.number}-브랜치명을지어주세요"
+branchName: "#${issue.number}-브랜치명을지어주세요"
 autoCloseIssue: true
 openDraftPR: true
 copyIssueLabelsToPR: true
