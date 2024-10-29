@@ -3,6 +3,7 @@ autoCloseIssue: true
 openDraftPR: true
 copyIssueLabelsToPR: true
 copyIssueAssigneeToPR: true
+mode: immediate
 branches:
   - label: "🐛 bug"
     prefix: bug-
