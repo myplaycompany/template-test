@@ -1,12 +1,12 @@
-branchName: "#${issue.number}-브랜치명을지어주세요"
+branchName: "${issue.number}-브랜치명을지어주세요"
 autoCloseIssue: true
 openDraftPR: true
 copyIssueLabelsToPR: true
 copyIssueAssigneeToPR: true
 branches:
-  - label: "\U0001F41B bug"
+  - label: "🐛 bug"
     prefix: bug-
-  - label: "\b\U0001F4AB feat"
+  - label: "💫 feat"
     prefix: feat-
   - label: "🔥 hotfix"
     prefix: hotfix-
