@@ -4,6 +4,7 @@ openDraftPR: true
 copyIssueLabelsToPR: true
 copyIssueAssigneeToPR: true
 mode: immediate
+autoLinkIssue: false
 branches:
   - label: "🐛 bug"
     prefix: bug-
