@@ -2,10 +2,11 @@ name: Branch Naming Policy Action
 
 on:
   create:
-  delete:
-  pull_request:
     branches:
-      - main
+  # delete:
+  # pull_request:
+  #   branches:
+  #     - main
 
 jobs:
   branch-naming-policy:
