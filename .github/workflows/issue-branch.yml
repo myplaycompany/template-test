@@ -3,6 +3,8 @@ name: Issue Branch123
 # on:
 #   issues:
 #     types: [opened]
+
+# The issue_comment.created event below is only needed for the ChatOps mode.
 on:
   issue_comment:
     types: [created]
