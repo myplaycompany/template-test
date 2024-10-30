@@ -1,0 +1,17 @@
+name: Create Branch on Issue Comment
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up GitHub CLI
+        run: |
+          curl -fsSL https://cli.github.com/install.sh | bash -s -- -i gh
+          gh auth login
+      - name: Create Branch
+        run: gh repo branch create my-new-branch main
