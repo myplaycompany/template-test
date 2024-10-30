@@ -35,11 +35,17 @@ jobs:
               const branchName = `${issueType}/${issueNumber}-${commentBody.replace(/\W+/g, '-')}`;
 
               // Create a new branch with the formatted name
-              const createBranchResponse = await github.rest.git.createRef({
+              //  const createBranchResponse = await github.rest.git.createRef({
+              //  owner: context.repo.owner,
+              //  repo: context.repo.repo,
+              //  branch: branchName,
+              //  ref: context.ref,
+              //  sha: `${env.parentSHA}`
+              //});
+              github.rest.pulls.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                branch: branchName,
-                ref: context.ref,
-                sha: `${env.parentSHA}`
-              });
+                title: issueTitle
+                head: branchName,
+                base: 'production'
             }
