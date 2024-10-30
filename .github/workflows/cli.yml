@@ -9,9 +9,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Check and Modify Branch Name
+        id: step1
+        with:
+          script: |
+            // const commentBody = 'newdari score manipulation';
+            // const issueNumber = 123;
+            // const issueTitle = '[FEATURE] 뉴다리 전적 수정';
+
+            const commentBody = context.payload.comment.body;
+            const issueNumber = context.issue.number;
+            const issueTitle = context.payload.issue.title;
+
+            // Check if the comment triggers a branch creation
+            if (commentBody) {  
+              // Extract issue type and number from the issue title
+              const issueTypeMatch = issueTitle.match(/^\[(\w+)\]/);
+              const issueType = issueTypeMatch ? issueTypeMatch[1].toLowerCase() : 'feature';
+              const branchName = `${issueType}/${issueNumber}-${commentBody.replace(/\W+/g, '-')}`;
+            }
+            console.log(`::set-output name=BRANCH_NAME::${branchName}`)  // github action output으로 전달
       - name: Set up GitHub CLI
         run: |
           curl -fsSL https://cli.github.com/install.sh | bash -s -- -i gh
           gh auth login
       - name: Create Branch
-        run: gh repo branch create my-new-branch main
+        env:
+          BRANCH_NAME: ${{ steps.step_one.outputs}}
+        run: gh repo branch create ${{ steps.step1.outputs.BRANCH_NAME }} main
