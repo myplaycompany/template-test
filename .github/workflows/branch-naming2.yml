@@ -39,6 +39,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 branch: branchName,
-                ref: context.ref
+                ref: context.ref,
+                sha: context.sha
               });
             }
