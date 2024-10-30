@@ -11,7 +11,7 @@ openPR: false
 # openDraftPR: true
 # copyIssueLabelsToPR: true
 # copyIssueAssigneeToPR: true
-# autoLinkIssue: false
+autoLinkIssue: true
 
 branches:
   - label: "🐛 bug"
