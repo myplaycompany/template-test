@@ -1,0 +1,39 @@
+name: Enforce Branch Naming Convention
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  enforce-branch-naming:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check and Modify Branch Name
+        uses: actions/github-script@v6
+        with:
+          script: |
+            // const commentBody = 'newdari score manipulation';
+            // const issueNumber = 123;
+            // const issueTitle = '[FEATURE] 뉴다리 전적 수정';
+
+            const commentBody = context.payload.comment.body;
+            const issueNumber = context.issue.number;
+            const issueTitle = context.issue.title;
+
+            // Check if the comment triggers a branch creation
+            // if (commentBody.includes('newdari score manipulation')) {
+            if (commentBody)) {  
+              // Extract issue type and number from the issue title
+              const issueTypeMatch = issueTitle.match(/^\[(\w+)\]/);
+              const issueType = issueTypeMatch ? issueTypeMatch[1].toLowerCase() : 'feature';
+              const branchName = `${issueType}/${issueNumber}-${commentBody.replace(/\W+/g, '-')}`;
+
+              // Create a new branch with the formatted name
+              const createBranchResponse = await github.rest.repos.createBranch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                branch: branchName,
+                ref: context.ref
+              });
+            }
