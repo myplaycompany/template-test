@@ -45,7 +45,7 @@ jobs:
               github.rest.pulls.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: issueTitle
+                title: issueTitle,
                 head: branchName,
                 base: 'production'
             }
