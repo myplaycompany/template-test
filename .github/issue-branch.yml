@@ -1,11 +1,11 @@
 branchName: "${issue.number}-${{ steps.step1.outputs.BRANCH_NAME }}"
 autoCloseIssue: true
-openDraftPR: true
-copyIssueLabelsToPR: true
-copyIssueAssigneeToPR: true
+# openDraftPR: true
+# copyIssueLabelsToPR: true
+# copyIssueAssigneeToPR: true
 mode: immediate
 openPR: false
-autoLinkIssue: false
+# autoLinkIssue: false
 branches:
   - label: "🐛 bug"
     prefix: bug/
