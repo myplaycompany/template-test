@@ -1,0 +1,35 @@
+  # - name: Branch name rules
+  # # You may pin to the exact commit or the version.
+  # # uses: deepakputhraya/action-branch-name@e0f8db53a8e289f1ae6f6c3e8dc70a3d366fd876
+  # uses: deepakputhraya/action-branch-name@v1.0.0
+  # with:
+
+  #   # Regex to validate the branch name
+  #   regex: # optional, default is 
+
+  #   # Comma separated list of prefix that must be used in every branch. eg: feature,hotfix,JIRA-
+  #   allowed_prefixes: # optional, default is 
+
+  #   # Comma separated list of branch names to ignore. eg: master,develop
+  #   ignore: # optional, default is master
+
+  #   # Min length of branch name
+  #   min_length: # optional, default is 1
+
+  #   # Max length of branch name. -1 to ignore the rule
+  #   max_length: # optional, default is -1
+
+name: 'Assert Branch Naming Convention'
+on: pull_request
+
+jobs:
+  branch-naming-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: deepakputhraya/action-branch-name@master
+        with:
+          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
+          allowed_prefixes: 'feat,bug,hotfix' # All branches should start with the given prefix
+          # ignore: master,develop # Ignore exactly matching branch names from convention
+          min_length: 5 # Min length of the branch name
+          max_length: 20 # Max length of the branch name
