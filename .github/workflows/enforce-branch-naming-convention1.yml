@@ -1,0 +1,32 @@
+name: Enforce Branch Naming Convention
+
+on:
+  create:
+    branches
+    # types: [opened, reopened, synchronize]
+
+jobs:
+  enforce-branch-naming:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Branch Name
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issueNumber = context.payload.issue.number;
+            const issueTitle = context.payload.issue.title;
+            const branchName = context.ref.replace('refs/heads/', '');
+
+            const issueTypeRegex = /^(feat|fix|hotfix)/;
+            const issueNumberRegex = new RegExp(`\\b${issueNumber}\\b`);
+
+            if (!issueTypeRegex.test(branchName) || !issueNumberRegex.test(issueNumber)) {
+              core.setFailed(`Branch name "${branchName}" does not follow the format: <issue_type>/<issue_number>-<issue_title>. Please rename the branch.`);
+            } else {
+              // Check if the branch name matches the issue title (optional)
+              // const titleRegex = new RegExp(issueTitle.replace(/\W+/g, '-'), 'i');
+              // if (!titleRegex.test(branchName)) {
+              //  core.warning('Branch name does not match issue title. Consider updating the branch name.');
+              // }
+            }
