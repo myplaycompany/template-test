@@ -1,6 +1,6 @@
 mode: immediate
 # branchName: "${issue.number}-${process.env.BRANCH_NAME}"
-branchName: "${issue.number}-${context.payload.comment.body}"
+branchName: "${issue.number}-${payload.comment.body}"
 
 # mode: chatops
 # experimental:
