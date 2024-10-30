@@ -19,7 +19,7 @@ jobs:
 
             const commentBody = context.payload.comment.body;
             const issueNumber = context.issue.number;
-            const issueTitle = context.issue.title;
+            const issueTitle = context.payload.issue.title;
 
             console.log(commentBody)
             console.log(issueNumber)
