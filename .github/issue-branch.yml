@@ -1,4 +1,5 @@
-branchName: "${issue.number}-${process.env.BRANCH_NAME}"
+# branchName: "${issue.number}-${process.env.BRANCH_NAME}"
+branchName: "${issue.number}-aaaaa"
 autoCloseIssue: true
 # openDraftPR: true
 # copyIssueLabelsToPR: true
