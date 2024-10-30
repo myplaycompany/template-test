@@ -13,27 +13,27 @@ jobs:
   create_issue_branch_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Check and Modify Branch Name
-        uses: actions/github-script@v7
-        id: step1
-        with:
-          script: |
-            const commentBody = context.payload.comment.body;
-            const issueNumber = context.issue.number;
-            const issueTitle = context.payload.issue.title;
+      # - name: Check and Modify Branch Name
+      #   uses: actions/github-script@v7
+      #   id: step1
+      #   with:
+      #     script: |
+      #       const commentBody = context.payload.comment.body;
+      #       const issueNumber = context.issue.number;
+      #       const issueTitle = context.payload.issue.title;
 
-            if (commentBody) {  
-              const issueTypeMatch = issueTitle.match(/^\[(\w+)\]/);
-              const issueType = issueTypeMatch ? issueTypeMatch[1].toLowerCase() : 'feature';
-              const branchName = `${issueType}/${issueNumber}-${commentBody.replace(/\W+/g, '-')}`;
-              console.log(`${branchName}`);
-              console.log(`::set-output name=branch_name::${branchName}`);  // github action output으로 전달
-            }
+      #       if (commentBody) {  
+      #         const issueTypeMatch = issueTitle.match(/^\[(\w+)\]/);
+      #         const issueType = issueTypeMatch ? issueTypeMatch[1].toLowerCase() : 'feature';
+      #         const branchName = `${issueType}/${issueNumber}-${commentBody.replace(/\W+/g, '-')}`;
+      #         console.log(`${branchName}`);
+      #         console.log(`::set-output name=branch_name::${branchName}`);  // github action output으로 전달
+      #       }
       - name: Create Issue Branch
         uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: ${{ steps.step1.outputs.branch_name }}
+          # BRANCH_NAME: ${{ steps.step1.outputs.branch_name }}
       - name: Echo branch name
         run: |
           echo aaaaa
