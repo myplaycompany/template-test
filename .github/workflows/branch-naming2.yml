@@ -40,6 +40,6 @@ jobs:
                 repo: context.repo.repo,
                 branch: branchName,
                 ref: context.ref,
-                sha: ${{env.parentSHA}}
+                sha: `${env.parentSHA}`
               });
             }
