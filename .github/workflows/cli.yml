@@ -33,8 +33,9 @@ jobs:
               const issueTypeMatch = issueTitle.match(/^\[(\w+)\]/);
               const issueType = issueTypeMatch ? issueTypeMatch[1].toLowerCase() : 'feature';
               const branchName = `${issueType}/${issueNumber}-${commentBody.replace(/\W+/g, '-')}`;
+              console.log(`${branchName}`);
+              console.log(`::set-output name=BRANCH_NAME::${branchName}`);  // github action output으로 전달
             }
-            console.log(`::set-output name=BRANCH_NAME::${branchName}`)  // github action output으로 전달
       - name: Set up GitHub CLI
         run: |
           curl -fsSL https://cli.github.com/install.sh | bash -s -- -i gh
