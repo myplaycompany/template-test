@@ -23,7 +23,7 @@ jobs:
 
             // Check if the comment triggers a branch creation
             // if (commentBody.includes('newdari score manipulation')) {
-            if (commentBody)) {  
+            if (commentBody) {  
               // Extract issue type and number from the issue title
               const issueTypeMatch = issueTitle.match(/^\[(\w+)\]/);
               const issueType = issueTypeMatch ? issueTypeMatch[1].toLowerCase() : 'feature';
