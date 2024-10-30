@@ -5,6 +5,7 @@
 mode: chatops
 experimental:
   branchNameArgument: true
+branchName: "${issue.number}"
 
 autoCloseIssue: true
 openPR: false
