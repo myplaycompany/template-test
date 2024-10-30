@@ -1,11 +1,10 @@
-# mode: immediate
+mode: immediate
 # branchName: "${issue.number}-${process.env.BRANCH_NAME}"
-# branchName: "${issue.number}-aaaaa"
+branchName: "${issue.number}-${context.payload.comment.body}"
 
-mode: chatops
-experimental:
-  branchNameArgument: true
-branchName: "${issue.number}"
+# mode: chatops
+# experimental:
+#   branchNameArgument: true
 
 autoCloseIssue: true
 openPR: false
