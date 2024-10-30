@@ -33,4 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_NAME: ${{ steps.step1.outputs.branch_name }}
       - name: Echo branch name
-        run: echo ${{ steps.Create_Issue_Branch.outputs.branchName }}
+        run: |
+          echo aaaaa
+          echo ${{ steps.Create_Issue_Branch.outputs.branchName }}
