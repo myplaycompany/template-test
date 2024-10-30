@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Check and Modify Branch Name
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             // const commentBody = 'newdari score manipulation';
@@ -35,7 +35,7 @@ jobs:
               const branchName = `${issueType}/${issueNumber}-${commentBody.replace(/\W+/g, '-')}`;
 
               // Create a new branch with the formatted name
-              const createBranchResponse = await github.rest.repos.createBranch({
+              const createBranchResponse = await github.rest.git.createRef({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 branch: branchName,
