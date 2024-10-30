@@ -48,4 +48,4 @@ jobs:
                 title: issueTitle,
                 head: branchName,
                 base: 'production'
-            }
+            });
