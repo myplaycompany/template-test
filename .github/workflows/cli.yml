@@ -22,6 +22,11 @@ jobs:
             const issueNumber = context.issue.number;
             const issueTitle = context.payload.issue.title;
 
+            console.log(commentBody)
+            console.log(issueNumber)
+            console.log(issueTitle)
+            console.log('###########')
+
             // Check if the comment triggers a branch creation
             if (commentBody) {  
               // Extract issue type and number from the issue title
