@@ -1,12 +1,18 @@
+# mode: immediate
 # branchName: "${issue.number}-${process.env.BRANCH_NAME}"
-branchName: "${issue.number}-aaaaa"
+# branchName: "${issue.number}-aaaaa"
+
+mode: chatops
+experimental:
+  branchNameArgument: true
+
 autoCloseIssue: true
+openPR: false
 # openDraftPR: true
 # copyIssueLabelsToPR: true
 # copyIssueAssigneeToPR: true
-mode: immediate
-openPR: false
 # autoLinkIssue: false
+
 branches:
   - label: "🐛 bug"
     prefix: bug/
