@@ -1,8 +1,8 @@
 name: Enforce Branch Naming Convention
 
 on:
-  create:
-    branches
+  push:
+    branches: '*'
     # types: [opened, reopened, synchronize]
 
 jobs:
